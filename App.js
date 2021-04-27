@@ -28,7 +28,7 @@ function HomeScreen({ navigation }) {
 
 function Activities({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={styles.container}>
       <Text>Activities</Text>
       <Button
         title="Go to Activities... again"
@@ -61,10 +61,11 @@ export default function App() {
   } else {
 
     return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Messy Kids' }} />
-          <Stack.Screen name="Activities" component={Activities} options={{ title: 'Activities' }} />
+      <NavigationContainer >
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Messy Kids', headerShown: false }} />
+          <Stack.Screen name="Activities" component={Activities} options={{ title: false,
+          headerStyle: { backgroundColor: '#FFECF9', shadowColor: 'transparent', headerTintColor: '#000'}, headerTintColor: '#000'}} />
         </Stack.Navigator>
       </NavigationContainer>
     );
