@@ -62,7 +62,7 @@ export default function App() {
 
     return (
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator   screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Messy Kids' }} />
           <Stack.Screen name="Activities" component={Activities} options={{ title: 'Activities' }} />
         </Stack.Navigator>
