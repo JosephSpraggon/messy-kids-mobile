@@ -3,6 +3,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
+
 
 function HomeScreen({ navigation }) {
   return (
@@ -45,14 +48,27 @@ const Stack = createStackNavigator();
 
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Messy Kids' }} />
-        <Stack.Screen name="Activities" component={Activities} options={{ title: 'Activities' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  let [fontsLoaded] = useFonts({
+    'Quicksand-Light': require('./assets/fonts/Quicksand-Light.ttf'),
+    'Quicksand-Bold': require('./assets/fonts/Quicksand-Bold.ttf'),
+    'Quicksand-Medium': require('./assets/fonts/Quicksand-Medium.ttf'),
+    'Quicksand-Regular': require('./assets/fonts/Quicksand-Regular.ttf'),
+    'Quicksand-SemiBold': require('./assets/fonts/Quicksand-SemiBold.ttf')
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Messy Kids' }} />
+          <Stack.Screen name="Activities" component={Activities} options={{ title: 'Activities' }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
