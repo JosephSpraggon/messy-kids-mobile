@@ -12,7 +12,7 @@ function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <Image style={styles.logo} source={require('./assets/messy-kids-logo.png')}/>
       <StatusBar style="auto" />
-      <TouchableOpacity  style={styles.button}>
+      <TouchableOpacity  style={styles.button} title="Activities" onPress={() => navigation.navigate('Activities')}>
         <Text style={styles.titleFont}>
           Activities
         </Text>
