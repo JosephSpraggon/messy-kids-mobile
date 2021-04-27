@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
@@ -44,6 +44,17 @@ function Activities({ navigation }) {
   );
 }
 
+function LogoTitle({ navigation }) {
+  return (
+    <TouchableOpacity onPress={() => navigation.popToTop()}>
+      <Image
+        style={{ width: 100, height: 100 }}
+        source={require('./assets/messy-kids-logo.png')}
+      />
+    </TouchableOpacity>
+  );
+}
+
 const Stack = createStackNavigator();
 
 
@@ -64,8 +75,8 @@ export default function App() {
       <NavigationContainer >
         <Stack.Navigator>
           <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Messy Kids', headerShown: false }} />
-          <Stack.Screen name="Activities" component={Activities} options={{ title: false,
-          headerStyle: { backgroundColor: '#FFECF9', shadowColor: 'transparent', headerTintColor: '#000'}, headerTintColor: '#000'}} />
+          <Stack.Screen name="Activities" component={Activities} options={{ headerTitle: props => <LogoTitle {...props} />,
+          headerStyle: { backgroundColor: '#FFECF9', shadowColor: 'transparent'}, headerTintColor: '#000'}} />
         </Stack.Navigator>
       </NavigationContainer>
     );
