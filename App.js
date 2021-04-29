@@ -44,16 +44,6 @@ function Activities({ navigation }) {
   );
 }
 
-function LogoTitle({ navigation }) {
-  return (
-    <TouchableOpacity onPress={() => navigation.popToTop()}>
-      <Image
-        style={{ width: 100, height: 100 }}
-        source={require('./assets/messy-kids-logo.png')}
-      />
-    </TouchableOpacity>
-  );
-}
 
 const Stack = createStackNavigator();
 
@@ -73,10 +63,9 @@ export default function App() {
 
     return (
       <NavigationContainer >
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Messy Kids', headerShown: false }} />
-          <Stack.Screen name="Activities" component={Activities} options={{ headerTitle: props => <LogoTitle {...props} />,
-          headerStyle: { backgroundColor: '#FFECF9', shadowColor: 'transparent'}, headerTintColor: '#000'}} />
+        <Stack.Navigator screenOptions={{ headerShown: false }} >
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Activities" component={Activities} />
         </Stack.Navigator>
       </NavigationContainer>
     );
